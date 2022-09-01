@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="現在行っている活動やおもしろ雑学を発信しております。" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicons/rimg.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicons/rimg.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="../../favicons/rimg.png">
+    <link rel="icon" type="image/png" sizes="62x62" href="../../favicons/rimg.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="apple-touch-icon-precomposed" href="../../favicons/rimg.png" />
+    <script src="https://kit.fontawesome.com/b2175c3bf6.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <title>OVERBLIND</title>
+</head>
+<style>
+    /*共通部分*/
+    body {
+        margin: 0;
+        background-color: #eee;
+    }
+
+    /*ボックスの左右の余白*/
+    .boxA,
+    .boxB,
+    .box5,
+    .box6 {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    /*サイト名*/
+    .site h1 a {
+        color: black;
+        font-family: 'Cinzel', serif;
+        text-decoration: none;
+    }
+
+    .site h1 a span {
+        color: rgba(51, 51, 51, 0.8);
+    }
+
+    .site h1 {
+        margin: 0;
+        font-size: 30px;
+    }
+
+    /*ナビゲーション*/
+    .menu {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 1;
+        width: 50vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(51, 51, 51, 0.8);
+    }
+
+    .menu_inner {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .menu_item {
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+        padding: .5em .1em;
+        border-bottom: 1px solid rgba(51, 51, 51, 0.9);
+        font-family: 'Cinzel', serif;
+        box-sizing: border-box;
+    }
+
+    .menu_item a {
+        display: block;
+        color: #fff;
+        font-size: 15px;
+        text-decoration: none;
+    }
+
+    .menu {
+        transform: translateX(100vw);
+        transition: all .3s linear;
+    }
+
+    .menu.is-active {
+        transform: translateX(0);
+    }
+
+    /*ハンバーガー*/
+    .menubtn {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 2;
+        width: 33px;
+        height: 33px;
+        background-color: #333;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+    }
+
+    .menubtn i {
+        font-size: 15px;
+    }
+
+    /*記事*/
+    .kiji h1 {
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-size: 36px;
+    }
+
+    .kiji p {
+        margin-top: 0;
+        margin-bottom: 20px;
+        letter-spacing: 0.03em;
+        line-height: 1.7;
+    }
+
+    .topimg {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /*マーカーを引く*/
+    .kiji p span {
+        background: linear-gradient(transparent 60%, #90ee90 60%);
+    }
+
+    /*目次のデザイン変更*/
+    .toc_container {
+        margin-left: 0;
+        padding: 15px 10px 15px 30px;
+        /* 枠内の余白(上右下左) */
+        font-size: 100%;
+        /* 文字サイズ */
+        border: dotted 1px #777;
+        /* 線の種類と色 */
+        background: #f7f7f7;
+        /* 背景 */
+        line-height: 15px;
+    }
+
+    .toc_title {
+        font-size: 110%;
+        font-weight: bold;
+        /* 文字の太さ　通常はnormal */
+        color: #000;
+        /* 文字の色 */
+    }
+
+    .toc_list li {
+        padding: 5px;
+        list-style-type: decimal;
+        /* マークの種類 */
+    }
+
+    /*記事の小見出し*/
+    .kiji h2 {
+        margin-top: 40px;
+        border-left: solid 10px #333;
+        padding-left: 10px;
+        font-weight: normal;
+    }
+
+    /*記事の投稿日*/
+    .kijiinfo {
+        margin-top: -10px;
+        color: #aaa;
+        font-size: 15px;
+        text-align: right;
+    }
+
+    .kijiinfo i {
+        margin-right: 5px;
+    }
+
+    /*記事の分類*/
+    .kijicat {
+        margin-bottom: 5px;
+    }
+
+    .kijicat ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .kijicat li a {
+        display: block;
+        margin-right: 5px;
+        padding: 3px 5px;
+        background-color: #bbb;
+        border-radius: 2px;
+        color: #fff;
+        font-size: 12px;
+        text-decoration: none;
+    }
+
+    .kijicat i {
+        margin-right: 5px;
+    }
+
+    .kijicat ul {
+        display: flex;
+    }
+
+    /*関連記事*/
+    .kanren h1 {
+        margin-top: 40px;
+        margin-bottom: 10px;
+        border-bottom: dotted 2px #ddd;
+        font-family: 'Cinzel', serif;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .grid .item h3 {
+        margin-top: 0;
+        margin-bottom: 5px;
+        margin-left: 15px;
+        margin-right: 15px;
+        font-size: 15px;
+    }
+
+    .grid_2 .item h3 {
+        margin-top: 0;
+        margin-bottom: 15px;
+        margin-left: 15px;
+        margin-right: 15px;
+        font-size: 15px;
+    }
+
+    .item p {
+        margin-top: 0;
+        margin-bottom: 15px;
+        margin-left: 15px;
+        margin-right: 15px;
+        color: #aaa;
+        font-size: 14px;
+    }
+
+    .item a {
+        display: block;
+        border: solid 1px #ddd;
+        color: #000;
+        text-decoration: none;
+    }
+
+    .item img {
+        margin-bottom: 15px;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .item:hover {
+        box-shadow: 0 0 10px #ddd;
+    }
+
+    .grid {
+        display: grid;
+        gap: 15px;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /*ライター*/
+    .writer h1 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        border-bottom: dotted 2px #ddd;
+        font-family: 'Cinzel', serif;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .writer .icon {
+        text-align: center;
+    }
+
+    .writer img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 100px;
+    }
+
+    .writer .name {
+        color: #666;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .writer .text {
+        padding: 0 15px;
+        letter-spacing: 0.03em;
+        line-height: 1.7;
+    }
+
+    .writer .name i {
+        margin-left: 5px;
+    }
+
+    /*コピーライト*/
+    .copyright p {
+        margin: 0;
+        color: #666;
+        font-size: 14px;
+    }
+
+    /*box6の上に区切り線を入れる*/
+    .box6 {
+        border-top: solid 1px #ddd;
+    }
+
+    /*ボックスの上下間隔*/
+    .box1 {
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+    .box3 {
+        padding-top: 40px;
+        padding-bottom: 30px;
+    }
+
+    .box4 {
+        padding-bottom: 30px;
+    }
+
+    .box6 {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    @media (max-width: 599px) {
+
+        /*記事のタイトル*/
+        .kiji h1 {
+            font-size: 26px;
+        }
+
+        /*ボックスの上下間隔*/
+        .box1 {
+            padding-top: 4px;
+            padding-bottom: 4px;
+        }
+
+        .box3 {
+            padding-top: 25px;
+        }
+
+        /*関連記事*/
+        .grid .item h3 {
+            margin-bottom: 15px;
+        }
+
+        .item p {
+            display: none;
+        }
+    }
+
+    @media (min-width: 600px) and (max-width: 767px) {
+
+        .writer_inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon {
+            width: 70%;
+        }
+    }
+
+    @media (min-width: 768px) {
+
+        .boxA {
+            display: flex;
+        }
+
+        .box1 {
+            width: 70%;
+        }
+
+        .box2 {
+            width: 30%;
+        }
+
+        .boxB {
+            display: flex;
+        }
+
+        .box3 {
+            width: 70%;
+        }
+
+        .box4 {
+            width: 30%;
+        }
+
+        .box4 {
+            padding-top: 40px;
+        }
+
+        /*box3とbox4の左右間隔*/
+        .box3 {
+            padding-right: 50px;
+            box-sizing: border-box;
+        }
+
+    }
+
+    @media (min-width: 1040px) {
+
+        .boxA,
+        .boxB,
+        .box5,
+        .box6 {
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+</style>
+
+<body>
+    <div class="boxA">
+        <div class="box1">
+            <div class="site">
+                <h1>
+                    <a href="../../index.html">OVE<span>R</span>BLIND</a>
+                </h1>
+            </div>
+        </div>
+        <div class="box2">
+
+            <button type="button" class="menubtn">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="menu">
+                <div class="menu_inner">
+                    <div class="menu_item"><a href="../../index.html">TOP</a></div>
+                    <div class="menu_item"><a href="../../blog/blog.html">BLOG</a></div>
+                    <div class="menu_item"><a href="../../Quiz/quiz.html">QUIZ</a></div>
+                    <div class="menu_item"><a href="../../Travia/travia.html">TRAVIA</a></div>
+                    <div class="menu_item"><a href="../../otherwise/otherwise.html">OTHERWISE</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="boxB">
+        <div class="box3">
+            <article class="kiji">
+
+                <div class="kijicat">
+                    <ul>
+                        <li><a href="../quiz.html">
+                                <i class="fas fa-tag"></i>クイズ
+                            </a></li>
+                    </ul>
+                </div>
+
+                <h1>クイズのベタ問を覚えよう⑥</h1>
+
+                <div class="kijiinfo">
+                    <time datetime="2022-08-10">
+                        <i class="fas fa-clock"></i>2022.08.24
+                    </time>
+                </div>
+
+                <p><img src="../../img/quizimg6.jpg" alt="" class="topimg"></p>
+
+                <p>
+                    多分ここまで読んでくれた方はもう多くのベタ問を吸収されてると思います。でも、実際ににクイズをしたりとか、復習をしたりしないと忘れてしまうんですよね。
+                    今回もベタ問10問を紹介していきますが、ぜひ前の記事にもどって復習もしてみてー。
+                </p>
+
+                <div class="toc_container">
+                    <h3 class="toc_title">目次</h3>
+                    <ol class="toc_list">
+                        <li><a href="#subtitle_1">ベタ問ってそもそも何?</a></li>
+                        <li><a href="#subtitle_2">ベタ問紹介</a></li>
+                    </ol>
+                </div>
+
+                <h2 id="subtitle_1">ベタ問ってそもそも何?</h2>
+
+                <p>
+                    競技クイズで何度も出題される頻出問題のことを指します。手垢がべたべたに付くほど読まれた問題というところからべた問と名付けられたそうです。
+                </p>
+
+                <h2 id="subtitle_2">ベタ問紹介</h2>
+
+                <p>
+                    ＜問題１＞<br>
+                    「勝利をもたらす聖なる町」という意味がある、スリランカの首都はどこでしょう？
+                </p>
+
+                <p>
+                    ＜答え１＞<br>
+                    <span>スリジャヤワルダナプラコッテ</span>
+                </p>
+
+                <p>
+                    ＜問題２＞<br>
+                    本州最南端の岬は和歌山県の潮岬、では最北端の岬は青森県のどこでしょう？
+                </p>
+
+                <p>
+                    ＜答え２＞<br>
+                    <span>大間崎</span>
+                </p>
+
+                <p>
+                    ＜問題３＞<br>
+                    「ここに地終わり海始まる」と刻まれた石碑が建っていることでも知られる、ポルトガルにあるユーラシア大陸最西端の岬といえば？
+                </p>
+
+                <p>
+                    ＜答え３＞<br>
+                    <span>ロカ岬</span>
+                </p>
+
+                <p>
+                    ＜問題４＞<br>
+                    家計の支出に占める飲食費の割合のことを、これを提唱したドイツの経済学者の名をとって何というでしょう？
+                </p>
+
+                <p>
+                    ＜答え４＞<br>
+                    <span>エンゲル係数</span>
+                </p>
+
+                <p>
+                    ＜問題５＞<br>
+                    ラテン語で「死を忘れるな」という意味がある、芸術作品のモチーフとして広く使われる警告文といえば？
+                </p>
+
+                <p>
+                    ＜答え５＞<br>
+                    <span>メメント・モリ</span>
+                </p>
+
+                <p>
+                    ＜問題６＞<br>
+                    ラテン語で「死を忘れるな」という意味がある、芸術作品のモチーフとして広く使われる警告文といえば？
+                </p>
+
+                <p>
+                    ＜答え６＞<br>
+                    <span>品字様</span>
+                </p>
+
+                <p>
+                    ＜問題７＞<br>
+                    メガネのフレームの生産量が全国の90パーセントを占める、福井県の市はどこでしょう？
+                </p>
+
+                <p>
+                    ＜答え７＞<br>
+                    <span>鯖江市</span>
+                </p>
+
+                <p>
+                    ＜問題８＞<br>
+                    歯の検査で用いられる記号のうち、虫歯を指すアルファベット1文字は何でしょう。
+                </p>
+
+                <p>
+                    ＜答え８＞<br>
+                    <span>C</span>
+                </p>
+
+                <p>
+                    ＜答え９＞<br>
+                    アメリカ合衆国で、最も面積が広い州はアラスカ州ですが、最も面積が狭い州はどこでしょう?
+                </p>
+
+                <p>
+                    ＜答え９＞<br>
+                    <span>ロードアイランド州</span>
+                </p>
+
+                <p>
+                    ＜問題１０＞<br>
+                    小倉百人一首で、最初の1字で限定できる歌、いわゆる「1字決まり」の歌は全部で何首ある？
+                </p>
+
+                <p>
+                    ＜答え１０＞<br>
+                    <span>7首</span>
+                </p>
+
+            </article>
+
+            <aside class="kanren">
+                <h1>RELATED</h1>
+                <div class="grid">
+                    <div class="item">
+                        <a href="1.html">
+                            <img src="../../img/quizimg.jpg" alt="">
+                            <h3>クイズのベタ問を覚えよう①</h3>
+                            <p>今日からクイズのべた問を集めたべた問集を作成することにしました。 クイズを始めたばっかりの初心...</p>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="2.html">
+                            <img src="../../img/quizimg2.png" alt="">
+                            <h3>クイズのベタ問を覚えよう②</h3>
+                            <p>これでこの記事を書くのは二回目になるんですけど、この記事を書くにあたってクイズの問題を調べると...</p>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="3.html">
+                            <img src="../../img/quizimg3.jpg" alt="">
+                            <h3>クイズのベタ問を覚えよう③</h3>
+                            <p>今回でこのベタ問シリーズも第三弾！！この記事を書いている日が３０度を超える真夏日ということもあり...</p>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="5.html">
+                            <img src="../../img/quizimg5.png" alt="">
+                            <h3>クイズのベタ問を覚えよう⑤</h3>
+                            <p>クイズって問題を全て聞き切った後に答えがわかってももう遅いんですよね。とはいえ、全て聞いて答え...</p>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+        <div class="box4">
+            <aside class="writer">
+                <h1>WRITER</h1>
+                <div class="writer_inner">
+                    <p class="icon"><img src="../../img/face.jpg" alt=""></p>
+                    <div class="intro">
+                        <p class="name">夜空　道<i class="fas fa-check-circle"></i></p>
+                        <p class="text">
+                            性別 : 男性<br>
+                            血液型 : B型<br>
+                            自己紹介 : この活動を現在主として管理している者です。自分が調べた面白い知識を発信していきます。
+                        </p>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+    </div>
+    <div class="box6">
+        <div class="copyright">
+            <p>Copyright &copy; OVERBLIND</p>
+        </div>
+    </div>
+</body>
+<script>
+
+    document.querySelector('.menubtn').addEventListener('click', function () {
+        document.querySelector('.menu').classList.toggle('is-active');
+    });
+
+</script>
+
+</html>

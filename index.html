@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="私たちが行なっていおる活動や知識関係の記事を掲載しております。" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicons/rimg.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicons/rimg.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="favicons/rimg.png">
+    <link rel="icon" type="image/png" sizes="62x62" href="favicons/rimg.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="apple-touch-icon-precomposed" href="favicons/rimg.png" />
+    <script src="https://kit.fontawesome.com/b2175c3bf6.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9728751994041100"
+        crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <meta name="google-site-verification" content="YxZ6XK6bhfZhDEvl2gSlrFEc1mezz7gExNXW1QF2A4g" />
+    <title>OVERBLIND</title>
+</head>
+<style>
+    /*共通部分*/
+    body {
+        margin: 0;
+        background-color: #eee;
+    }
+
+    /*ボックスの左右の余白*/
+    .boxA,
+    .box4,
+    .box5,
+    .box6 {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    /*サイト名*/
+    .site h1 a {
+        color: black;
+        font-family: 'Cinzel', serif;
+        text-decoration: none;
+    }
+
+    .site h1 a span {
+        color: rgba(51, 51, 51, 0.8);
+    }
+
+    .site h1 {
+        margin: 0;
+        font-size: 30px;
+    }
+
+    /*ナビゲーション*/
+    .menu {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 1;
+        width: 50vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(51, 51, 51, 0.8);
+    }
+
+    .menu_inner {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .menu_item {
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+        padding: .5em .1em;
+        border-bottom: 1px solid rgba(51, 51, 51, 0.9);
+        font-family: 'Cinzel', serif;
+        box-sizing: border-box;
+    }
+
+    .menu_item a {
+        display: block;
+        color: #fff;
+        font-size: 15px;
+        text-decoration: none;
+    }
+
+    .menu {
+        transform: translateX(100vw);
+        transition: all .3s linear;
+    }
+
+    .menu.is-active {
+        transform: translateX(0);
+    }
+
+    /*ハンバーガー*/
+    .menubtn {
+        position: fixed;
+        top: 9px;
+        right: 10px;
+        z-index: 2;
+        width: 33px;
+        height: 33px;
+        background-color: #333;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+    }
+
+    .menubtn i {
+        font-size: 15px;
+    }
+
+    /*メイン画像*/
+    .topimg {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /*ランキング*/
+    .grid .item h3 {
+        margin-top: 0;
+        margin-bottom: 5px;
+        margin-left: 15px;
+        margin-right: 15px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .item p {
+        margin-top: 0;
+        margin-bottom: 15px;
+        margin-left: 15px;
+        margin-right: 15px;
+        color: #aaa;
+        font-size: 14px;
+    }
+
+    .item a {
+        display: block;
+        border: solid 1px #ddd;
+        color: #000;
+        text-decoration: none;
+    }
+
+    .item img {
+        margin-bottom: 15px;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .item:hover {
+        box-shadow: 0 0 10px #ddd;
+    }
+
+    .grid,
+    .grid_2 {
+        display: grid;
+        gap: 15px;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .ranking h1 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        border-bottom: dotted 1px #ddd;
+        font-family: 'Cinzel', serif;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    /*コピーライト*/
+    .copyright p {
+        margin: 0;
+        color: #666;
+        font-size: 14px;
+    }
+
+    /*box6の上に区切り線を入れる*/
+    .box6 {
+        border-top: solid 1px #ddd;
+    }
+
+    /*ボックスの上下間隔*/
+    .boxA {
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+    .box4,
+    .box5 {
+        padding-top: 40px;
+        padding-bottom: 30px;
+    }
+
+    .box6 {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    @media (max-width: 599px) {
+
+        .grid {
+            gap: 15px;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        /*ボックスの上下間隔*/
+        .boxA {
+            padding-top: 4px;
+            padding-bottom: 4px;
+        }
+
+        .text_inner {
+            font-size: 14px;
+            padding: 5px;
+        }
+    }
+
+    @media (min-width: 600px) and (max-width: 767px) {}
+
+    @media (min-width: 768px) {
+        .boxA {
+            display: flex;
+        }
+
+        .box1 {
+            width: 70%;
+        }
+
+        .box2 {
+            width: 30%;
+        }
+    }
+
+    @media (min-width: 1040px) {
+
+        .boxA,
+        .box4,
+        .box5,
+        .box6 {
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+</style>
+
+<body>
+    <div class="boxA">
+        <div class="box1">
+            <div class="site">
+                <h1>
+                    <a href="">OVE<span>R</span>BLIND</a>
+                </h1>
+            </div>
+        </div>
+        <div class="box2">
+
+            <button type="button" class="menubtn">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="menu">
+                <div class="menu_inner">
+                    <div class="menu_item"><a href="index.html">TOP</a></div>
+                    <div class="menu_item"><a href="blog/blog.html">BLOG</a></div>
+                    <div class="menu_item"><a href="Quiz/quiz.html">QUIZ</a></div>
+                    <div class="menu_item"><a href="Travia/travia.html">TRAVIA</a></div>
+                    <div class="menu_item"><a href="otherwise/otherwise.html">OTHERWISE</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box3">
+        <img src="img/topimg.jpg" alt="" class="topimg">
+    </div>
+    <!--ピックアップ-->
+    <div class="box4">
+        <aside class="ranking">
+            <h1>PICKUP</h1>
+            <div class="grid">
+                <div class="item">
+                    <a href="Travia/article/1.html">
+                        <img src="img/traviaimg.png" alt="">
+                        <h3>Traviaって何なの？</h3>
+                        <p>今回は今このブログのライターをやっている私とTAIHEIがメインで行っているTraviaという活動がどう...</p>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="Quiz/article/1.html">
+                        <img src="img/quizimg.jpg" alt="">
+                        <h3>クイズのベタ問を覚えよう①</h3>
+                        <p>今日からクイズのべた問を集めたべた問集を作成することにしました。 クイズを始めたばっかりの初心...</p>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="blog/article/5.html">
+                        <img src="img/blogimg5.jpg" alt="">
+                        <h3>この夏やること</h3>
+                        <p>この夏やること ・ブログ　目標：有料サーバーとドメインに切り替える分の金額を稼ぐ　・Unity　目標...</p>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="otherwise/article/3.html">
+                        <img src="img/youtubeimg.jpg" alt="">
+                        <h3>最近のyoutuber紹介</h3>
+                        <p>第七波到来で夏休みも外にでることが出来ず、まだまだ高いyoutube需要。このコロナ夏休みに涼しい部屋で...</p>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="https://px.a8.net/svt/ejp?a8mat=3NGMZK+33C2WI+50+2HP601" rel="nofollow">
+                        <img border="0" width="336" height="280" alt=""
+                            src="https://www27.a8.net/svt/bgt?aid=220805984187&wid=001&eno=01&mid=s00000000018015066000&mc=1"></a>
+                    <img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=3NGMZK+33C2WI+50+2HP601"
+                        alt="">
+                </div>
+                <div class="item">
+                    <a href="Quiz/article/3.html">
+                        <img src="img/quizimg3.jpg" alt="">
+                        <h3>クイズのベタ問を覚えよう③</h3>
+                        <p> 今回でこのベタ問シリーズも第三弾！！この記事を書いている日が３０度を超える真夏日ということもあ...</p>
+                    </a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <!--ニューポスト-->
+    <div class="box5">
+        <aside class="ranking">
+            <h1>NEWPOST</h1>
+            <div class="grid">
+                <div class="item">
+                    <a href="blog/article/6.html">
+                        <img src="img/prepareimg.jpg" alt="">
+                        <h3>2022.8.27活動記録</h3>
+                        <p>このブログを検索上位に表示させることを計画するにあたり、どのような記事を書くかということは非常...</p>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="blog/article/5.html">
+                        <img src="img/blogimg5.jpg" alt="">
+                        <h3>この夏やること</h3>
+                        <p>この夏やること ・ブログ　目標：有料サーバーとドメインに切り替える分の金額を稼ぐ　・Unity　目標...</p>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="Quiz/article/6.html">
+                        <img src="img/quizimg6.jpg" alt="">
+                        <h3>クイズのベタ問を覚えよう⑥</h3>
+                        <p>多分ここまで読んでくれた方はもう多くのベタ問を吸収されてると思います。でも、実際ににクイズをした...</p>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="otherwise/article/8.html">
+                        <img src="img/curryimg.jpg" alt="">
+                        <h3>意外と知らないものの名前①</h3>
+                        <p>結構目にするけどそれなんていうのってものありますよね。私は結構そういう者を調べて「へえ」ってン...</p>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="Quiz/article/5.html">
+                        <img src="img/quizimg5.png" alt="">
+                        <h3>クイズのベタ問を覚えよう⑤</h3>
+                        <p>クイズって問題を全て聞き切った後に答えがわかってももう遅いんですよね。そこがクイズの難しいとこ...</p>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="https://px.a8.net/svt/ejp?a8mat=3NGMZK+33C2WI+50+2HP601" rel="nofollow">
+                        <img border="0" width="336" height="280" alt=""
+                            src="https://www27.a8.net/svt/bgt?aid=220805984187&wid=001&eno=01&mid=s00000000018015066000&mc=1"></a>
+                    <img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=3NGMZK+33C2WI+50+2HP601"
+                        alt="">
+                </div>
+            </div>
+        </aside>
+    </div>
+    <div class="box6">
+        <div class="copyright">
+            <p>Copyright &copy; OVERBLIND</p>
+        </div>
+    </div>
+</body>
+<script>
+
+    document.querySelector('.menubtn').addEventListener('click', function () {
+        document.querySelector('.menu').classList.toggle('is-active');
+    });
+
+</script>
+
+</html>

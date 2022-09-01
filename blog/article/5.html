@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="現在行っている活動やおもしろ雑学を発信しております。" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicons/rimg.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicons/rimg.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="../../favicons/rimg.png">
+    <link rel="icon" type="image/png" sizes="62x62" href="../../favicons/rimg.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="apple-touch-icon-precomposed" href="../../favicons/rimg.png" />
+    <script src="https://kit.fontawesome.com/b2175c3bf6.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9728751994041100"
+        crossorigin="anonymous"></script>
+    <title>2022.8.19活動記録</title>
+</head>
+<style>
+    /*共通部分*/
+    body {
+        margin: 0;
+        background-color: #eee;
+    }
+
+    /*ボックスの左右の余白*/
+    .boxA,
+    .boxB,
+    .box5,
+    .box6 {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    /*サイト名*/
+    .site h1 a {
+        color: black;
+        font-family: 'Cinzel', serif;
+        text-decoration: none;
+    }
+
+    .site h1 a span {
+        color: rgba(51, 51, 51, 0.8);
+    }
+
+    .site h1 {
+        margin: 0;
+        font-size: 30px;
+    }
+
+    /*ナビゲーション*/
+    .menu {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 1;
+        width: 50vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(51, 51, 51, 0.8);
+    }
+
+    .menu_inner {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .menu_item {
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+        padding: .5em .1em;
+        border-bottom: 1px solid rgba(51, 51, 51, 0.9);
+        font-family: 'Cinzel', serif;
+        box-sizing: border-box;
+    }
+
+    .menu_item a {
+        display: block;
+        color: #fff;
+        font-size: 15px;
+        text-decoration: none;
+    }
+
+    .menu {
+        transform: translateX(100vw);
+        transition: all .3s linear;
+    }
+
+    .menu.is-active {
+        transform: translateX(0);
+    }
+
+    /*ハンバーガー*/
+    .menubtn {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 2;
+        width: 33px;
+        height: 33px;
+        background-color: #333;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+    }
+
+    .menubtn i {
+        font-size: 15px;
+    }
+
+    /*記事*/
+    .kiji h1 {
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-size: 36px;
+    }
+
+    .kiji p {
+        margin-top: 0;
+        margin-bottom: 20px;
+        letter-spacing: 0.03em;
+        line-height: 1.7;
+    }
+
+    .topimg {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /*マーカーを引く*/
+    .kiji p span {
+        background: linear-gradient(transparent 60%, #90ee90 60%);
+    }
+
+    /*目次のデザイン変更*/
+    .toc_container {
+        margin-left: 0;
+        padding: 15px 10px 15px 30px;
+        /* 枠内の余白(上右下左) */
+        font-size: 100%;
+        /* 文字サイズ */
+        border: dotted 1px #777;
+        /* 線の種類と色 */
+        background: #f7f7f7;
+        /* 背景 */
+        line-height: 15px;
+    }
+
+    .toc_title {
+        font-size: 110%;
+        font-weight: bold;
+        /* 文字の太さ　通常はnormal */
+        color: #000;
+        /* 文字の色 */
+    }
+
+    .toc_list li {
+        padding: 5px;
+        list-style-type: decimal;
+        /* マークの種類 */
+    }
+
+    /*記事の小見出し*/
+    .kiji h2 {
+        margin-top: 40px;
+        border-left: solid 10px #333;
+        padding-left: 10px;
+        font-weight: normal;
+    }
+
+    /*記事の投稿日*/
+    .kijiinfo {
+        margin-top: -10px;
+        color: #aaa;
+        font-size: 15px;
+        text-align: right;
+    }
+
+    .kijiinfo i {
+        margin-right: 5px;
+    }
+
+    /*記事の分類*/
+    .kijicat {
+        margin-bottom: 5px;
+    }
+
+    .kijicat ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .kijicat li a {
+        display: block;
+        margin-right: 5px;
+        padding: 3px 5px;
+        background-color: #bbb;
+        border-radius: 2px;
+        color: #fff;
+        font-size: 12px;
+        text-decoration: none;
+    }
+
+    .kijicat i {
+        margin-right: 5px;
+    }
+
+    .kijicat ul {
+        display: flex;
+    }
+
+    /*関連記事*/
+    .kanren h1 {
+        margin-top: 40px;
+        margin-bottom: 10px;
+        border-bottom: dotted 2px #ddd;
+        font-family: 'Cinzel', serif;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .grid .item h3 {
+        margin-top: 0;
+        margin-bottom: 5px;
+        margin-left: 15px;
+        margin-right: 15px;
+        font-size: 15px;
+    }
+
+    .grid_2 .item h3 {
+        margin-top: 0;
+        margin-bottom: 15px;
+        margin-left: 15px;
+        margin-right: 15px;
+        font-size: 15px;
+    }
+
+    .item p {
+        margin-top: 0;
+        margin-bottom: 15px;
+        margin-left: 15px;
+        margin-right: 15px;
+        color: #aaa;
+        font-size: 14px;
+    }
+
+    .item a {
+        display: block;
+        border: solid 1px #ddd;
+        color: #000;
+        text-decoration: none;
+    }
+
+    .item img {
+        margin-bottom: 15px;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .item:hover {
+        box-shadow: 0 0 10px #ddd;
+    }
+
+    .grid {
+        display: grid;
+        gap: 15px;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /*ライター*/
+    .writer h1 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        border-bottom: dotted 2px #ddd;
+        font-family: 'Cinzel', serif;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .writer .icon {
+        text-align: center;
+    }
+
+    .writer img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 100px;
+    }
+
+    .writer .name {
+        color: #666;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .writer .text {
+        padding: 0 15px;
+        letter-spacing: 0.03em;
+        line-height: 1.7;
+    }
+
+    .writer .name i {
+        margin-left: 5px;
+    }
+
+    /*コピーライト*/
+    .copyright p {
+        margin: 0;
+        color: #666;
+        font-size: 14px;
+    }
+
+    /*box6の上に区切り線を入れる*/
+    .box6 {
+        border-top: solid 1px #ddd;
+    }
+
+    /*ボックスの上下間隔*/
+    .box1 {
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+    .box3 {
+        padding-top: 40px;
+        padding-bottom: 30px;
+    }
+
+    .box4 {
+        padding-bottom: 30px;
+    }
+
+    .box6 {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    @media (max-width: 599px) {
+
+        /*記事のタイトル*/
+        .kiji h1 {
+            font-size: 26px;
+        }
+
+        /*ボックスの上下間隔*/
+        .box1 {
+            padding-top: 4px;
+            padding-bottom: 4px;
+        }
+
+        .box3 {
+            padding-top: 25px;
+        }
+
+        /*関連記事*/
+        .grid .item h3 {
+            margin-bottom: 15px;
+        }
+
+        .item p {
+            display: none;
+        }
+    }
+
+    @media (min-width: 600px) and (max-width: 767px) {
+
+        .writer_inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon {
+            width: 70%;
+        }
+    }
+
+    @media (min-width: 768px) {
+
+        .boxA {
+            display: flex;
+        }
+
+        .box1 {
+            width: 70%;
+        }
+
+        .box2 {
+            width: 30%;
+        }
+
+        .boxB {
+            display: flex;
+        }
+
+        .box3 {
+            width: 70%;
+        }
+
+        .box4 {
+            width: 30%;
+        }
+
+        .box4 {
+            padding-top: 40px;
+        }
+
+        /*box3とbox4の左右間隔*/
+        .box3 {
+            padding-right: 50px;
+            box-sizing: border-box;
+        }
+
+    }
+
+    @media (min-width: 1040px) {
+
+        .boxA,
+        .boxB,
+        .box5,
+        .box6 {
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+</style>
+
+<body>
+    <div class="boxA">
+        <div class="box1">
+            <div class="site">
+                <h1>
+                    <a href="../../index.html">OVE<span>R</span>BLIND</a>
+                </h1>
+            </div>
+        </div>
+        <div class="box2">
+
+            <button type="button" class="menubtn">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="menu">
+                <div class="menu_inner">
+                    <div class="menu_item"><a href="../../index.html">TOP</a></div>
+                    <div class="menu_item"><a href="../../blog/blog.html">BLOG</a></div>
+                    <div class="menu_item"><a href="../../Quiz/quiz.html">QUIZ</a></div>
+                    <div class="menu_item"><a href="../../Travia/travia.html">TRAVIA</a></div>
+                    <div class="menu_item"><a href="../../otherwise/otherwise.html">OTHERWISE</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="boxB">
+        <div class="box3">
+            <article class="kiji">
+
+                <div class="kijicat">
+                    <ul>
+                        <li><a href="../otherwise.html">
+                                <i class="fas fa-tag"></i>ブログ
+                            </a></li>
+                    </ul>
+                </div>
+
+                <h1>この夏やること</h1>
+
+                <div class="kijiinfo">
+                    <time datetime="2022-08-10">
+                        <i class="fas fa-clock"></i>2022.08.26
+                    </time>
+                </div>
+
+                <p><img src="../../img/blogimg5.jpg" alt="" class="topimg"></p>
+
+                <p>
+                    この夏やること<br><br>
+
+                    ・ブログ<br>
+                    目標：有料サーバーとドメインに切り替える分の金額を稼ぐ<br><br>
+
+                    ・Unity<br>
+                    目標：オンラインクイズゲームを作ってリリースする<br><br>
+
+                    ・オープンチャットの管理<br>
+                    目標：120人以上を集めて、Traviaやブログの集客につなげる<br><br>
+
+                    ・Travia<br>
+                    目標：OnlineTraviaをオープンチャット上で開催するとともに、現地で行う本大会を1回行う<br><br>
+
+                    ・検定類<br>
+                    目標：漢検準１・天文宇宙検定・世界遺産検定etc<br><br>
+                    
+                    ・プログラミング勉強会<br>
+                    目標：(未定、日程未調整)<br><br>
+                </p>
+
+            </article>
+
+            <aside class="kanren">
+                <h1>RELATED</h1>
+                <div class="grid">
+                    <div class="item">
+                        <a href="2.html">
+                            <img src="../../img/prepareimg.jpg" alt="">
+                            <h3>2022.8.14活動記録</h3>
+                            <p>漢検準1級を始めました。あいにくの台風だったので実際家でUnityは出来なかったので明日以降に再度...</p>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="3.html">
+                            <img src="../../img/prepareimg.jpg" alt="">
+                            <h3>2022.8.17活動記録</h3>
+                            <p>間が空いてしまいましたが、ようやくブログも体裁が決まって更新サイクルも決まりました。とりあえず...</p>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="1.html">
+                            <img src="../../img/prepareimg.jpg" alt="">
+                            <h3>022.8.13活動記録</h3>
+                            <p>とりあえず記事は少ないですけど、ブログの最終調整は終わりました。googleのサーチエンジンに表示さ...</p>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="4.html">
+                            <img src="../../img/prepareimg.jpg" alt="">
+                            <h3>2022.8.19活動記録</h3>
+                            <p>Unity始めました。目標物はみんはやに代わるゲームを作ることなんですが、普通ならUnityを一通り勉...</p>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+        <div class="box4">
+            <aside class="writer">
+                <h1>WRITER</h1>
+                <div class="writer_inner">
+                    <p class="icon"><img src="../../img/shoes.png" alt=""></p>
+                    <div class="intro">
+                        <p class="name">TAIHEI<i class="fas fa-check-circle"></i></p>
+                        <p class="text">
+                            性別 : 男性<br>
+                            血液型 : AB型<br>
+                            自己紹介 : TAIHEIです。この活動ではアシストを主にしてます。雑学やTraviaの記事は私が更新します。
+                        </p>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+    </div>
+    <div class="box6">
+        <div class="copyright">
+            <p>Copyright &copy; OVERBLIND</p>
+        </div>
+    </div>
+</body>
+<script>
+
+    document.querySelector('.menubtn').addEventListener('click', function () {
+        document.querySelector('.menu').classList.toggle('is-active');
+    });
+
+</script>
+
+</html>

@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="現在行っている活動やおもしろ雑学を発信しております。" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicons/rimg.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicons/rimg.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="../../favicons/rimg.png">
+    <link rel="icon" type="image/png" sizes="62x62" href="../../favicons/rimg.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="apple-touch-icon-precomposed" href="../../favicons/rimg.png" />
+    <script src="https://kit.fontawesome.com/b2175c3bf6.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9728751994041100"
+        crossorigin="anonymous"></script>
+    <title>最近はやっているユーチューバー紹介</title>
+</head>
+<style>
+    /*共通部分*/
+    body {
+        margin: 0;
+        background-color: #eee;
+    }
+
+    /*ボックスの左右の余白*/
+    .boxA,
+    .boxB,
+    .box5,
+    .box6 {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    /*サイト名*/
+    .site h1 a {
+        color: black;
+        font-family: 'Cinzel', serif;
+        text-decoration: none;
+    }
+
+    .site h1 a span {
+        color: rgba(51, 51, 51, 0.8);
+    }
+
+    .site h1 {
+        margin: 0;
+        font-size: 30px;
+    }
+
+    /*ナビゲーション*/
+    .menu {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 1;
+        width: 50vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(51, 51, 51, 0.8);
+    }
+
+    .menu_inner {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .menu_item {
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+        padding: .5em .1em;
+        border-bottom: 1px solid rgba(51, 51, 51, 0.9);
+        font-family: 'Cinzel', serif;
+        box-sizing: border-box;
+    }
+
+    .menu_item a {
+        display: block;
+        color: #fff;
+        font-size: 15px;
+        text-decoration: none;
+    }
+
+    .menu {
+        transform: translateX(100vw);
+        transition: all .3s linear;
+    }
+
+    .menu.is-active {
+        transform: translateX(0);
+    }
+
+    /*ハンバーガー*/
+    .menubtn {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 2;
+        width: 33px;
+        height: 33px;
+        background-color: #333;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+    }
+
+    .menubtn i {
+        font-size: 15px;
+    }
+
+    /*記事*/
+    .kiji h1 {
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-size: 36px;
+    }
+
+    .kiji p {
+        margin-top: 0;
+        margin-bottom: 20px;
+        letter-spacing: 0.03em;
+        line-height: 1.7;
+    }
+
+    .topimg {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /*youtube埋め込み*/
+    .video {
+        position: relative;
+        height: 0;
+        padding: 30px 0 56.25%;
+        margin-bottom: 20px;
+        overflow: hidden;
+    }
+
+    .video iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    /*マーカーを引く*/
+    .kiji p span {
+        background: linear-gradient(transparent 60%, #90ee90 60%);
+    }
+
+    /*目次のデザイン変更*/
+    .toc_container {
+        margin-left: 0;
+        padding: 15px 10px 15px 30px;
+        /* 枠内の余白(上右下左) */
+        font-size: 100%;
+        /* 文字サイズ */
+        border: dotted 1px #777;
+        /* 線の種類と色 */
+        background: #f7f7f7;
+        /* 背景 */
+        line-height: 15px;
+    }
+
+    .toc_title {
+        font-size: 110%;
+        font-weight: bold;
+        /* 文字の太さ　通常はnormal */
+        color: #000;
+        /* 文字の色 */
+    }
+
+    .toc_list li {
+        padding: 5px;
+        list-style-type: decimal;
+        /* マークの種類 */
+    }
+
+    /*記事の小見出し*/
+    .kiji h2 {
+        margin-top: 40px;
+        border-left: solid 10px #333;
+        padding-left: 10px;
+        font-weight: normal;
+    }
+
+    /*記事の投稿日*/
+    .kijiinfo {
+        margin-top: -10px;
+        color: #aaa;
+        font-size: 15px;
+        text-align: right;
+    }
+
+    .kijiinfo i {
+        margin-right: 5px;
+    }
+
+    /*記事の分類*/
+    .kijicat {
+        margin-bottom: 5px;
+    }
+
+    .kijicat ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .kijicat li a {
+        display: block;
+        margin-right: 5px;
+        padding: 3px 5px;
+        background-color: #bbb;
+        border-radius: 2px;
+        color: #fff;
+        font-size: 12px;
+        text-decoration: none;
+    }
+
+    .kijicat i {
+        margin-right: 5px;
+    }
+
+    .kijicat ul {
+        display: flex;
+    }
+
+    /*関連記事*/
+    .kanren h1 {
+        margin-top: 40px;
+        margin-bottom: 10px;
+        border-bottom: dotted 2px #ddd;
+        font-family: 'Cinzel', serif;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .grid .item h3 {
+        margin-top: 0;
+        margin-bottom: 5px;
+        margin-left: 15px;
+        margin-right: 15px;
+        font-size: 15px;
+    }
+
+    .grid_2 .item h3 {
+        margin-top: 0;
+        margin-bottom: 15px;
+        margin-left: 15px;
+        margin-right: 15px;
+        font-size: 15px;
+    }
+
+    .item p {
+        margin-top: 0;
+        margin-bottom: 15px;
+        margin-left: 15px;
+        margin-right: 15px;
+        color: #aaa;
+        font-size: 14px;
+    }
+
+    .item a {
+        display: block;
+        border: solid 1px #ddd;
+        color: #000;
+        text-decoration: none;
+    }
+
+    .item img {
+        margin-bottom: 15px;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .item:hover {
+        box-shadow: 0 0 10px #ddd;
+    }
+
+    .grid {
+        display: grid;
+        gap: 15px;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /*ライター*/
+    .writer h1 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        border-bottom: dotted 2px #ddd;
+        font-family: 'Cinzel', serif;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .writer .icon {
+        text-align: center;
+    }
+
+    .writer img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 100px;
+    }
+
+    .writer .name {
+        color: #666;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .writer .text {
+        padding: 0 15px;
+        letter-spacing: 0.03em;
+        line-height: 1.7;
+    }
+
+    .writer .name i {
+        margin-left: 5px;
+    }
+
+    /*コピーライト*/
+    .copyright p {
+        margin: 0;
+        color: #666;
+        font-size: 14px;
+    }
+
+    /*box6の上に区切り線を入れる*/
+    .box6 {
+        border-top: solid 1px #ddd;
+    }
+
+    /*ボックスの上下間隔*/
+    .box1 {
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+    .box3 {
+        padding-top: 40px;
+        padding-bottom: 30px;
+    }
+
+    .box4 {
+        padding-bottom: 30px;
+    }
+
+    .box6 {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    @media (max-width: 599px) {
+
+        /*記事のタイトル*/
+        .kiji h1 {
+            font-size: 26px;
+        }
+
+        /*ボックスの上下間隔*/
+        .box1 {
+            padding-top: 4px;
+            padding-bottom: 4px;
+        }
+
+        .box3 {
+            padding-top: 25px;
+        }
+
+        .text_inner {
+            font-size: 14px;
+            padding: 5px;
+        }
+
+        /*関連記事*/
+        .grid .item h3 {
+            margin-bottom: 15px;
+        }
+
+        .item p {
+            display: none;
+        }
+    }
+
+    @media (min-width: 600px) and (max-width: 767px) {
+
+        .writer_inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon {
+            width: 70%;
+        }
+    }
+
+    @media (min-width: 768px) {
+
+        .boxA {
+            display: flex;
+        }
+
+        .box1 {
+            width: 70%;
+        }
+
+        .box2 {
+            width: 30%;
+        }
+
+        .boxB {
+            display: flex;
+        }
+
+        .box3 {
+            width: 70%;
+        }
+
+        .box4 {
+            width: 30%;
+        }
+
+        .box4 {
+            padding-top: 40px;
+        }
+
+        /*box3とbox4の左右間隔*/
+        .box3 {
+            padding-right: 50px;
+            box-sizing: border-box;
+        }
+
+    }
+
+    @media (min-width: 1040px) {
+
+        .boxA,
+        .boxB,
+        .box5,
+        .box6 {
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+</style>
+
+<body>
+    <div class="boxA">
+        <div class="box1">
+            <div class="site">
+                <h1>
+                    <a href="../../index.html">OVE<span>R</span>BLIND</a>
+                </h1>
+            </div>
+        </div>
+        <div class="box2">
+
+            <button type="button" class="menubtn">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="menu">
+                <div class="menu_inner">
+                    <div class="menu_item"><a href="../../index.html">TOP</a></div>
+                    <div class="menu_item"><a href="../../blog/blog.html">BLOG</a></div>
+                    <div class="menu_item"><a href="../../Quiz/quiz.html">QUIZ</a></div>
+                    <div class="menu_item"><a href="../../Travia/travia.html">TRAVIA</a></div>
+                    <div class="menu_item"><a href="../../otherwise/otherwise.html">OTHERWISE</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="boxB">
+        <div class="box3">
+            <article class="kiji">
+
+                <div class="kijicat">
+                    <ul>
+                        <li><a href="../otherwise.html">
+                                <i class="fas fa-tag"></i>その他
+                            </a></li>
+                    </ul>
+                </div>
+
+                <h1>最近はやっているユーチューバー紹介</h1>
+
+                <div class="kijiinfo">
+                    <time datetime="2022-08-10">
+                        <i class="fas fa-clock"></i>2022.08.15
+                    </time>
+                </div>
+
+                <p><img src="../../img/youtubeimg.jpg" alt="" class="topimg"></p>
+
+                <p>
+                    第七波到来で夏休みも外にでることが出来ず、まだまだ高いyoutube需要。このコロナ夏休みに涼しい部屋でyoutubeを見ている方も多いのではないでしょうか。
+                    なのでそんな貴方に、私の主観ですが現在人気のあるyoutubeを紹介していきたいと思います。
+                </p>
+
+                <div class="toc_container">
+                    <h3 class="toc_title">目次</h3>
+                    <ol class="toc_list">
+                        <li><a href="#subtitle_1">ひろゆき</a></li>
+                        <li><a href="#subtitle_2">コムドット</a></li>
+                        <li><a href="#subtitle_3">ばんばんざい</a></li>
+                        <li><a href="#subtitle_4">中町兄弟</a></li>
+                        <li><a href="#subtitle_5">平成フラミンゴ</a></li>
+                    </ol>
+                </div>
+
+                <h2 id="subtitle_1">ひろゆき</h2>
+
+                <div class="video">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/GAkZEQglk3k"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+
+                <p>
+                    「２チャンネル」の開設者であり、「ニコニコ動画」の元取締役管理人。最近では、若者が「最も信頼するインフルエンサー」ランキングで2位を獲得など
+                    影響力も絶大。基本生配信のみでお酒を飲みながらだらだら視聴者の質問に答えていくというスタイル。
+                </p>
+
+                <h2 id="subtitle_2">コムドット</h2>
+
+                <div class="video">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/7f93zcNWHzw"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+
+                <p>
+                    視聴者層は中学生、高校生が多く、若者が「最も信頼するインフルエンさサー」ランキングでは3位に選ばれている。最近では、シャネルの香水の広告で大炎上している。
+                    中学から幼馴染のメンバー5人で【地元ノリを世界に】をコンセプトに活動しており、非常にアットホームな動画となっている。
+                </p>
+
+                <h2 id="subtitle_3">ばんばんざい</h2>
+
+                <div class="video">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/5wIPqdguJHg"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+
+                <p>
+                    tiktokerの3人が集まって出来たyoutuberグループ。そのうちの二人、ぎしとみゆは北海道出身と同郷であり、学年も一緒だという。
+                    ドッキリや大食い、歌などの企画を行っており、朝から大食いなどのオリジナルキラーコンテンツも持っている。
+                </p>
+
+                <h2 id="subtitle_4">中町兄弟</h2>
+
+                <div class="video">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/hGCp8JzgnNg"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+
+                <p>
+                    有名ユーチューバーとしては珍しい本物の兄弟コンビである、お互い個人チャンネルを持っており、兄であるJPが妹を誘ったことからこのユーチューブをスタート。
+                    リアルの兄弟であるから出せる空気感は他のユーチューバーは出せない唯一無二のもの。
+                </p>
+
+                <h2 id="subtitle_5">平成フラミンゴ</h2>
+
+                <div class="video">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/405HeZ-pRHU"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+
+                <p>
+                    「高校生が選んだ」今一番好きな「芸人・タレント」ランキング１位、Ｚ世代が選ぶ好きな「２人組ユーチューバー」ランキング１位、他にも多くのランキングで首位を受賞しており、
+                    流行の最前線をいく二人組ユーチューバー。
+                </p>
+
+
+            </article>
+
+            <aside class="kanren">
+                <h1>RELATED</h1>
+                <div class="grid">
+                    <div class="item">
+                        <a href="1.html">
+                            <img src="../../img/createimg.jpg" alt="">
+                            <h3>ここ最近で私が知ったこと</h3>
+                            <p>最近プログラミングに関する習い事が急増したり、学校でプログラミングの授業が導入されたりと非常に...</p>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="2.html">
+                            <img src="../../img/newspaperimg.jpg" alt="">
+                            <h3>ここ最近で私が知ったこと</h3>
+                            <p>最近プログラミングに関する習い事が急増したり、学校でプログラミングの授業が導入されたりと非常に...</p>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="5.html">
+                            <img src="../../img/filmimg.jpg" alt="">
+                            <h3>私が選ぶおすすめ映画５選</h3>
+                            <p>さてさて私のインスタを持ってる人はわかるとおもうんですが、基本投稿は映画以外しないくらいには映...</p>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="4.html">
+                            <img src="../../img/programingimg.jpg" alt="">
+                            <h3>プログラミング言語に関して</h3>
+                            <p>最近プログラミングに関する習い事が急増したり、学校でプログラミングの授業が導入されたりと非常に...</p>
+                        </a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+        <div class="box4">
+            <aside class="writer">
+                <h1>WRITER</h1>
+                <div class="writer_inner">
+                    <p class="icon"><img src="../../img/face.jpg" alt=""></p>
+                    <div class="intro">
+                        <p class="name">夜空　道<i class="fas fa-check-circle"></i></p>
+                        <p class="text">
+                            性別 : 男性<br>
+                            血液型 : B型<br>
+                            自己紹介 : この活動を現在主として管理している者です。自分が調べた面白い知識を発信していきます。
+                        </p>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+    </div>
+    <div class="box6">
+        <div class="copyright">
+            <p>Copyright &copy; OVERBLIND</p>
+        </div>
+    </div>
+</body>
+<script>
+
+    document.querySelector('.menubtn').addEventListener('click', function () {
+        document.querySelector('.menu').classList.toggle('is-active');
+    });
+
+</script>
+
+</html>
